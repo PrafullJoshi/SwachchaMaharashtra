@@ -8,11 +8,13 @@ import android.webkit.WebViewClient;
 
 public class MainActivity extends AppCompatActivity {
 
+    private WebView webview;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        WebView webview = (WebView) findViewById(R.id.activity_main_webview);
+        webview = (WebView) findViewById(R.id.activity_main_webview);
         webview.setWebViewClient(new WebViewClient());
 
         // Enable JS
@@ -23,6 +25,11 @@ public class MainActivity extends AppCompatActivity {
         webview.setWebViewClient(new MyAppWebViewClient());
 
         // Use local resource
+        webview.loadUrl("file:///android_asset/swachcha_maharashtra/index.html");
+    }
+
+    @Override
+    public void onBackPressed() {
         webview.loadUrl("file:///android_asset/swachcha_maharashtra/index.html");
     }
 
