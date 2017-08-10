@@ -92,7 +92,15 @@
 																<!--<input type="file" name="demo-image" id="demo-image" value="" placeholder="Select a Photo" required multiple />-->
 																<h4>Select Image to upload</h4>
 																<input type="file" id="camera-image" accept="image/*;capture=camera">
-																
+
+																<!--<input type="button" value="Say hello" onClick="showAndroidToast('Hello Android!')" />-->
+
+																<!--File Uri: <label id="lbluri">no file uri</label>-->
+																<br />
+																File Path: <label id="lblpath">No File Selected</label>
+																<!--<br />
+																<input type="button" value="Choose Photo" onClick="choosePhoto()" />-->
+
 
 															</div>
 															<div class="6u 12u$(medium)">
@@ -107,8 +115,8 @@
 
 														<ul class="actions small" style="text-align: right;">
 															
-															<li><input type="reset" class="button" value="Reset"></input></li>
-															<li><input type="submit" class="button special" value="Post"></input></li>
+															<li><input type="reset" class="button" value="Reset"/></li>
+															<li><input type="submit" class="button special" value="Post"/></li>
 															
 														</ul>
 														
@@ -251,6 +259,24 @@
 					// read the image file as a data URL.
 					reader.readAsDataURL(this.files[0]);
 				};
+
+				function showAndroidToast(toast) {
+					Android.showToast(toast);
+				}
+
+				function setFilePath(file) {
+					document.getElementById('lblpath').innerHTML = file;
+					// Android.showToast(file);
+					document.getElementById("uploadedImage").src = "file:///" + file;
+				}
+				function setFileUri(uri) {
+					// document.getElementById('lbluri').innerHTML = uri;
+					// Android.showToast(uri);
+				}
+				function choosePhoto() {
+					var file = Android.choosePhoto();
+					window.alert("file = " + file);
+				}
 				</script>
 
 	</body>
